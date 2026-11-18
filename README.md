@@ -6,6 +6,7 @@ Terraform project with its own README.
 | Folder | What it does |
 |---|---|
 | [instance-creation](instance-creation/) | Launches a Debian 13 EC2 instance with configurable CloudWatch monitoring |
+| [security-groups](security-groups/) | Launches an EC2 instance protected by security groups for SSH, HTTPS and outbound traffic |
 
 ## Prerequisites
 
