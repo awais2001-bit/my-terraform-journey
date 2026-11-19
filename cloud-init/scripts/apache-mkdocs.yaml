@@ -1,0 +1,32 @@
+#cloud-config
+# mkdocs-system: creates user "batman", installs Apache + MkDocs,
+# builds a starter MkDocs site and serves it on port 80.
+
+groups:
+  - dpro42-group
+
+users:
+  - default
+  - name: batman
+    gecos: Bruce Wayne
+    shell: /bin/bash
+    primary_group: dpro42-group
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, sudo
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB/f+QTOj2W772VCKjQAmd9B/uTDfHeHCrUhS1ECrBiu terraform-lab
+
+# runcmd runs once, as root, at the end of the first boot (no sudo needed).
+runcmd:
+  - echo "Hello! and welcome to this server! Destroy me when you are done!" >> /home/batman/hello.txt
+  - apt-get update
+  - apt-get install -y -q apache2 mkdocs
+  - mkdir -p /home/batman/mkdocs
+  - cd /home/batman/mkdocs
+  - mkdocs new mkdocs-project
+  - cd mkdocs-project
+  - mkdocs build
+  - rm -f /var/www/html/index.html
+  - cp -R site/* /var/www/html
+  - systemctl restart apache2

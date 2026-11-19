@@ -8,6 +8,7 @@ Terraform project with its own README.
 | [instance-creation](instance-creation/) | Launches a Debian 13 EC2 instance with configurable CloudWatch monitoring |
 | [security-groups](security-groups/) | Launches an EC2 instance protected by security groups for SSH, HTTPS and outbound traffic |
 | [ssh-aws-config](ssh-aws-config/) | Launches an EC2 instance with your own SSH key pair, security groups and outputs, ready to SSH into |
+| [cloud-init](cloud-init/) | Uses cloud-init `user_data` to automatically install Apache and publish a MkDocs site on first boot |
 
 ## Prerequisites
 
