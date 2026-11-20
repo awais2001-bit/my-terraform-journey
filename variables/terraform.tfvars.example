@@ -1,0 +1,4 @@
+tfvar_example = "This is an example of a variable with no default value, set in terraform.tfvars"
+
+
+#.tfvars file only houses the values of variables, not their definitions. The variable definitions are in variables.tf.
